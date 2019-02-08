@@ -1,0 +1,182 @@
+class Program
+{
+    Block start;
+    Block current;
+    Map<string, int> variables;
+
+    void Program()
+    {
+        current = start
+    }
+
+    void execute()
+    {
+        for(;;)
+        {
+            current = current.execute(variables)
+        }
+    }
+}
+
+class FloatValue
+{
+    float value();
+}
+
+
+class BoolValues
+{
+    bool value();
+}
+
+class ConstantFloatValue : FloatValue
+{
+    float a;
+    a + b + c
+}
+
+class PlusOperation : FloatValue
+{
+    public FloatValue a;
+    public FloatValue b;
+
+    override float value()
+    {
+        return a.value() + b.value();
+    }
+}
+
+class MinusOperation : FloatValue
+{
+    public FloatValue a;
+    public FloatValue b;
+
+    override float value()
+    {
+        return a - b;
+    }
+}
+
+class MultiplicationOperation : FloatValue
+{
+    public float a;
+    public float b;
+
+    override float value()
+    {
+        return a * b;
+    }
+}
+
+class DivisionOperation : FloatValue
+{
+    public float a;
+    public float b;
+
+    override float value()
+    {
+        return a / b;
+    }
+}
+
+class Condition
+
+class Block
+{
+    public Block nextBlock;
+
+    Block execute();
+}
+
+class IfBlock : Block
+{
+    public Condition condition;
+    public Block trueBlock;
+
+    override Block execute()
+    {
+        if (condition.check())
+        {
+            // TODO(AndreM): o ultimo block deste true block volta pro next
+            return trueBlock;
+        }
+
+        return nextBlock;
+    }
+}
+
+class IfElseBlock : Block
+{
+    public Condition condition;
+    public Block trueBlock;
+    public Block falseBlock;
+
+    override Block execute()
+    {
+        if (condition.check())
+        {
+            // TODO(AndreM): o ultimo block deste true block volta pro next
+            return trueBlock;
+        }
+        else
+        {
+            // TODO(AndreM): o ultimo block deste false block volta pro next
+            return falseBlock;
+        }
+    }
+}
+
+class WhileBlock : Block
+{
+    public Condition condition;
+    public Block trueBlock;
+    public Block falseBlock;
+
+    override Block execute()
+    {
+        if (condition.check())
+        {
+            // TODO(AndreM): o ultimo block deste true block volta pro while
+            return trueBlock;
+        }
+
+        return nextBlock;
+    }
+}
+
+
+class RepeatBlock : Block
+{
+
+    override Block execute()
+    {
+        nextBlock.resetCounter;
+        return nextBlock;
+    }
+}
+
+class RepeatBlockAux : Block
+{
+    public int quant;
+    public Block trueBlock;
+    public Block falseBlock;
+
+    private int counter;
+
+    public void resetCounter()
+    {
+        counter = 0;
+    }
+
+    override Block execute()
+    {
+        if (counter < quant)
+        {
+            counter++;
+            // TODO(AndreM): o ultimo block deste true block volta pro repeat
+            return trueBlock;
+        }
+
+        return nextBlock;
+    }
+}
