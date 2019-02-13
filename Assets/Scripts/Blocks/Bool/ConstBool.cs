@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConstBoolValue : BoolValue
+public class ConstBool : BoolValue
 {
     public bool value;
 
