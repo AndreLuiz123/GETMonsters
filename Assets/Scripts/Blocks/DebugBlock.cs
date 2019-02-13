@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class DebugBlock : ProgramBlock
 {
-	public string message;
+    public string message;
+    public FloatValue value;
 
-	public override ProgramBlock Execute()
-	{
-		Debug.Log(message);
+    public override ProgramBlock Execute(Monster monster)
+    {
+        Debug.Log(message + ": " + value.Value(monster));
 
-		return nextBlock;
-	}
+        return nextBlock;
+    }
 }

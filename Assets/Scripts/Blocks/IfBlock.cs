@@ -7,9 +7,9 @@ public class IfBlock : ProgramBlock
     public BoolValue condition;
     public ProgramBlock trueBlock;
 
-    public override ProgramBlock Execute()
+    public override ProgramBlock Execute(Monster monster)
     {
-        if (condition.Value())
+        if (condition.Value(monster))
         {
             // TODO(AndreM): o ultimo block deste true block volta pro next
             return trueBlock;
