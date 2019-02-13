@@ -60,13 +60,5 @@ public class CharMoves : MonoBehaviour {
 
 	}
 
-	void FixedUpdate(){
-
-
-
-
-	}
-
-
 
 }
