@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class BoolValue : MonoBehaviour
 {
-	public abstract bool Value();
+    public abstract bool Value(Monster monster);
 }

@@ -11,5 +11,5 @@ public class MonsterPart : ScriptableObject
     int damage;
     int partID;
     public List <Ability> abilityList;
-    Image sprite;
+    Sprite sprite;
 }

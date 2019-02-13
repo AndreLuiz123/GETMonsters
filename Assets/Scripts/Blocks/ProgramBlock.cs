@@ -6,5 +6,5 @@ public abstract class ProgramBlock : MonoBehaviour
 {
     public ProgramBlock nextBlock;
 
-    public abstract ProgramBlock Execute();
+    public abstract ProgramBlock Execute(Monster monster);
 }

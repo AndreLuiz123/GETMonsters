@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ConstBoolValue : BoolValue
 {
-	public bool value;
+    public bool value;
 
-	public override bool Value()
-	{
-		return value;
-	}
+    public override bool Value(Monster monster)
+    {
+        return value;
+    }
 }

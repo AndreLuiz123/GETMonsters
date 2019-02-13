@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class MonsterBrain : MonoBehaviour
 {
+    public Monster monster;
     public ProgramBlock start;
 
     private ProgramBlock current;
-    private Dictionary<string, int> variables;
 
-	void Start()
-	{
-		current = start;
-	}
+    void Start()
+    {
+        current = start;
+    }
 
-	void Update()
-	{
-		Execute();
-	}
+    void Update()
+    {
+        Execute();
+    }
 
     public void Execute()
     {
         for(; current != null;)
         {
-            current = current.Execute();
+            current = current.Execute(monster);
         }
     }
 }
