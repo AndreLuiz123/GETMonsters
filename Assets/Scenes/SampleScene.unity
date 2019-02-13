@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 1070524205}
   - component: {fileID: 1070524204}
   - component: {fileID: 1070524208}
+  - component: {fileID: 1070524209}
   m_Layer: 0
   m_Name: Monstro
   m_TagString: Untagged
@@ -248,12 +249,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1070524206
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -307,7 +308,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1070524203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.57, y: 3.69, z: 0}
+  m_LocalPosition: {x: -8.78, y: 0.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1512458600}
@@ -320,7 +321,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1070524203}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca403e2c3676a2c4fac9c0f1356827cb, type: 3}
   m_Name: 
@@ -329,8 +330,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 78b0b57851c06dd4bac7bdc21ca88cde, type: 2}
   - {fileID: 11400000, guid: ab9c192afaab93a489e31e4c5083f810, type: 2}
   - {fileID: 11400000, guid: dacb71276cde66148b1410c0c49c4e24, type: 2}
-  speed: 0
+  speed: 4
   jumpForce: 0
+  onGround: 0
+  groundCheck: {fileID: 1512458600}
+--- !u!114 &1070524209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1070524203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21fb4e0b29053b14d9b7731f949c71bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   onGround: 0
   groundCheck: {fileID: 1512458600}
 --- !u!1 &1512458599

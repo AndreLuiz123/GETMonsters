@@ -8,36 +8,65 @@ public class CharMoves : MonoBehaviour {
 
 	//float horizontalMove = 0f;
 
+	public List<int> moveList;
+
+	//PULO
 	public bool onGround = false;
 	public Transform groundCheck;
+	public float jumpForce;
+	public float runSpeed;
+	public float fallSpeed;
 
 
-	private Rigidbody2D rb;
+	public Rigidbody2D rb;
+
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		rb = GetComponent<Rigidbody2D>();
+		moveList = new List<int>();
+
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 
 		onGround = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+		//MOVIMENTAÇÃO
+		float horizontalMove = Input.GetAxisRaw("Horizontal")*runSpeed;
+		rb.velocity= new Vector2(horizontalMove, rb.velocity.y);
 
+		rb.velocity += Physics2D.gravity*Time.deltaTime;
+		//PULO
+		if(!onGround)
+		{
+			if(rb.velocity.y<0)
+			{
+			    rb.velocity +=  fallSpeed*Physics2D.gravity*Time.deltaTime;
+			}
 
-		float horizontalMove = Input.GetAxisRaw("Horizontal");
-
-		rb.velocity= new Vector2(5*horizontalMove,rb.velocity.y);
-
-		if(onGround){
-			rb.AddForce(new Vector2(0, 100));
+		}else
+		{
+			//rb.velocity = new Vector2(horizontalMove, 0);
+			if(Input.GetButton("Jump"))
+			{
+				rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+			}
 		}
+
 
 
 	}
 
 	void FixedUpdate(){
 
+
+
+
 	}
+
+
 
 }
