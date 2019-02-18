@@ -38,8 +38,10 @@ public class CharMoves : MonoBehaviour {
 		float horizontalMove = Input.GetAxisRaw("Horizontal")*runSpeed;
 		rb.velocity= new Vector2(horizontalMove, rb.velocity.y);
 
-		rb.velocity += Physics2D.gravity*Time.deltaTime;
+
 		//PULO
+		rb.velocity += Physics2D.gravity*Time.deltaTime;
+
 		if(!onGround)
 		{
 			if(rb.velocity.y<0)
