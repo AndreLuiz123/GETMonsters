@@ -6,12 +6,12 @@ using UnityEngine;
 public class Ability : ScriptableObject
 {
     public string name;
-    int damage;
-    int cooldown;
-    float castTime;
+    public int damage;
+    public int cooldown;
+    public float castTime;
 
     void useAbality()
     {
-
+        
     }
 }

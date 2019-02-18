@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: testAbilityH
   m_EditorClassIdentifier: 
   name: test1
+  damage: 0
+  cooldown: 1
+  castTime: 0
