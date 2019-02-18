@@ -11,8 +11,7 @@ public class FireballScript : MonoBehaviour
     public Renderer renderer;
     // Start is called before the first frame update
     void Start()
-    {  
-        velX = 0f;
+    {
         rb = GetComponent<Rigidbody2D> ();
     }
 
