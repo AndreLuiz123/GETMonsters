@@ -5,11 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Monster Part", menuName = "Monster/Monster Part", order = 1)]
 public class MonsterPart : ScriptableObject
 {
-    int life;
-    int shield;
-    int movementSpeed;
-    int damage;
-    int partID;
+    public int life;
+    public int shield;
+    public int movementSpeed;
+    public int damage;
+    public int partID;
     public List <Ability> abilityList;
+    public List <Ability> passiveList;
     Sprite sprite;
 }
