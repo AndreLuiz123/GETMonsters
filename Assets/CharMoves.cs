@@ -21,14 +21,12 @@ public class CharMoves : MonoBehaviour {
 
 
 	public Rigidbody2D rb;
-	public BoxCollider2D boxCol;
 	public Animator anim;
 
 	// Use this for initialization
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody2D>();
-		boxCol = GetComponent<BoxCollider2D>();
 		anim = GetComponent<Animator>();
 		//moveList = new List<int>();
 		anim.SetBool("onGround",true);
@@ -73,13 +71,9 @@ public class CharMoves : MonoBehaviour {
 		if(verticalMove<0 && onGround)
 		{
 			anim.SetBool("isCrouch",true);
-			boxCol.size = new Vector2(1,1);
-			boxCol.offset = new Vector2(0,0.5f);
 		}else
 		{
 			anim.SetBool("isCrouch",false);
-			boxCol.size = new Vector2(1,3);
-			boxCol.offset = new Vector2(0,1.5f);
 		}
 
 
