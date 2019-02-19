@@ -31,7 +31,8 @@ public class CharMoves : MonoBehaviour {
 		boxCol = GetComponent<BoxCollider2D>();
 		anim = GetComponent<Animator>();
 		//moveList = new List<int>();
-
+		anim.SetBool("onGround",true);
+		anim.SetBool("isCrouch",false);
 	}
 
 	// Update is called once per frame
@@ -51,6 +52,7 @@ public class CharMoves : MonoBehaviour {
 
 		if(!onGround)
 		{
+			anim.SetBool("onGround",false);
 			if(rb.velocity.y<0)
 			{
 			    rb.velocity +=  fallSpeed*Physics2D.gravity*Time.deltaTime;
@@ -58,6 +60,7 @@ public class CharMoves : MonoBehaviour {
 
 		}else
 		{
+			anim.SetBool("onGround",true);
 			//rb.velocity = new Vector2(horizontalMove, 0);
 			if(Input.GetButton("Jump"))
 			{
@@ -78,6 +81,7 @@ public class CharMoves : MonoBehaviour {
 			boxCol.size = new Vector2(1,3);
 			boxCol.offset = new Vector2(0,1.5f);
 		}
+
 
 
 
