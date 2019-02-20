@@ -6,32 +6,52 @@ using UnityEngine.UI;
 
 public class DragCopy : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public static GameObject itemDragged;
     public static Vector3 relativePosition;
+    public static Canvas canvas;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        var canvas = GetComponentInParent<Canvas>();
+        canvas = GetComponentInParent<Canvas>();
         if (canvas == null)
             return;
 
-        DragObject.itemDragged = Instantiate(gameObject, transform.parent);
-        // DragObject.itemDragged = Instantiate(gameObject, canvas.transform);
-        DragObject.relativePosition = transform.position - Input.mousePosition;
-
-        eventData.pointerDrag = DragObject.itemDragged;
+        DragCopy.relativePosition = transform.position - Input.mousePosition;
+        eventData.pointerDrag = Instantiate(gameObject, canvas.transform);
+        CanvasGroup canvasGroup = eventData.pointerDrag.GetComponent<CanvasGroup>();
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (eventData.pointerCurrentRaycast.gameObject)
+        {
+            Transform selfTransform = eventData.pointerDrag.transform;
+            DropContainer dropContainer = eventData.pointerCurrentRaycast.gameObject.GetComponent<DropContainer>();
+
+            if (dropContainer)
+            {
+                SetAsNextSibling(selfTransform, dropContainer.newSibling, dropContainer.dropNext);
+            }
+            else
+            {
+                selfTransform.SetParent(canvas.transform);
+            }
+        }
         transform.position = Input.mousePosition + relativePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        itemDragged = null;
+        CanvasGroup canvasGroup = eventData.pointerDrag.GetComponent<CanvasGroup>();
+        canvasGroup.blocksRaycasts = true;
         relativePosition = Vector3.zero;
 
-        LayoutRebuilder.MarkLayoutForRebuild(DragObject.itemDragged.GetComponent<RectTransform>());
+        LayoutRebuilder.MarkLayoutForRebuild(eventData.pointerDrag.GetComponent<RectTransform>());
+    }
+
+    public void SetAsNextSibling(Transform selfTransform, Transform siblingTransform, bool next = true)
+    {
+        selfTransform.SetParent(siblingTransform.parent);
+        selfTransform.SetSiblingIndex(siblingTransform.GetSiblingIndex() + (next ? 1 : 0));
     }
 }
