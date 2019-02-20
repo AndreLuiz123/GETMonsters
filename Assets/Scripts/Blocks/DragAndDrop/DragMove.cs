@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragCopy : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragMove : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public static Vector3 relativePosition;
     public static Canvas canvas;
@@ -16,9 +16,7 @@ public class DragCopy : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             return;
 
         DragCopy.relativePosition = transform.position - Input.mousePosition;
-        eventData.pointerDrag = Instantiate(gameObject, canvas.transform);
-        Destroy(eventData.pointerDrag.GetComponent<DragCopy>());
-        eventData.pointerDrag.AddComponent<DragMove>();
+        eventData.pointerDrag = gameObject;
         CanvasGroup canvasGroup = eventData.pointerDrag.GetComponent<CanvasGroup>();
         canvasGroup.blocksRaycasts = false;
     }
