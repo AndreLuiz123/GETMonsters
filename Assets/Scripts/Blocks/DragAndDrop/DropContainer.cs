@@ -10,6 +10,18 @@ public class DropContainer : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+        /*
+        ProgramBlock block;
+        ProgramBlock newBlock;
+        if (dropNext)
+        {
+            block.next = newBlock;
+        }
+        else
+        {
+            newBlock.next = block;
+        }
+        */
         // DragHandler.itemDragged.transform.SetParent(newParent);
     }
 }
