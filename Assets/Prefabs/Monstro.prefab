@@ -172,6 +172,8 @@ GameObject:
   - component: {fileID: 2353752041020289593}
   - component: {fileID: 2353752041020289592}
   - component: {fileID: 4284340867657457774}
+  - component: {fileID: 7569500771192796066}
+  - component: {fileID: 5087647864030270385}
   m_Layer: 0
   m_Name: Monstro
   m_TagString: Untagged
@@ -194,6 +196,7 @@ Transform:
   - {fileID: 2353752040752408353}
   - {fileID: 2353752040613883705}
   - {fileID: 2353752041341343413}
+  - {fileID: 8836138210037377585}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -254,8 +257,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca403e2c3676a2c4fac9c0f1356827cb, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   status:
   - {fileID: 11400000, guid: 78b0b57851c06dd4bac7bdc21ca88cde, type: 2}
   - {fileID: 11400000, guid: ab9c192afaab93a489e31e4c5083f810, type: 2}
@@ -274,9 +277,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21fb4e0b29053b14d9b7731f949c71bd, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  moveList:
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveList: 
   onGround: 0
   groundCheck: {fileID: 2353752041512623201}
   jumpForce: 15
@@ -293,22 +296,53 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb42ff9da1fe1fe4793722f7b53a6a79, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   maxLife: 0
   maxEnergy: 0
   maxShield: 0
   movementSpeed: 0
   damage: 0
   resistence: 0
+  life: 0
+  energy: 0
+  shield: 0
   parts: []
-  passiveList: []
   Fireball: {fileID: 2130845967453357903, guid: 0706e8bb7482ac04bb9b2734fed1b8d6,
     type: 3}
   fireBallCD: 3
   fbCD: 0
   mouth: {fileID: 8836138210037377585}
   isTurnedRight: 0
+--- !u!114 &7569500771192796066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2353752041020289570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a8cf5eb23b88948acfa7dc003f7f0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passiveList: []
+  testAbility: {fileID: 5087647864030270385}
+--- !u!114 &5087647864030270385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2353752041020289570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256d730cd6fb49f40b9e82ecfc1ec5ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityDescriptor: {fileID: 11400000, guid: 07b159f2f478f99498c98ab0cb6b34c5, type: 2}
+  projectile: {fileID: 2130845967453357903, guid: 0706e8bb7482ac04bb9b2734fed1b8d6,
+    type: 3}
 --- !u!1 &2353752041341343410
 GameObject:
   m_ObjectHideFlags: 0
