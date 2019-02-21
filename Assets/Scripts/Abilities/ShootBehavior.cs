@@ -12,21 +12,18 @@ public class ShootBehavior : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         renderer = GetComponentInChildren<Renderer>();
+        rigidbody.velocity = new Vector2 (x, y);
     }
 
     void Update()
     {
-        rigidbody.velocity = new Vector2 (x, y);
-
         if (!renderer.isVisible)
             Destroy(gameObject);
-            
     }
 
-    public void setDirection (float direction)
+    public void SetDirection(float direction)
     {
-        transform.localScale =  new Vector3(direction, 1f, 1f);
-        x *= direction;
-        y *= direction;
+        transform.localScale = new Vector3(direction, 1f, 1f);
+        x = Mathf.Abs(x) * direction;
     }
 }

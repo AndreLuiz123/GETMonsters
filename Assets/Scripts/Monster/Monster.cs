@@ -15,7 +15,7 @@ public class Monster : MonoBehaviour
     public int life;
     public int energy;
     public int shield;
-    
+
     public List<MonsterPart> parts;
 
     //variaveis que precisam de outro lugar
@@ -24,7 +24,7 @@ public class Monster : MonoBehaviour
 
     void Start ()
     {
-        getStatusFromParts();
+        GetStatusFromParts();
         isTurnedRight = true;
     }
 
@@ -43,7 +43,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    void getStatusFromParts()
+    void GetStatusFromParts()
     {
         foreach (MonsterPart part in parts)
         {
@@ -51,8 +51,6 @@ public class Monster : MonoBehaviour
             maxShield += part.shield;
             movementSpeed += part.movementSpeed;
             damage += part.damage;
-
-            AbilityController abilityController = GetComponent<AbilityController> ();
         }
     }
 }

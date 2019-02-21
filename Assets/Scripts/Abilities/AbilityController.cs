@@ -12,21 +12,21 @@ public class AbilityController : MonoBehaviour
     public Ability testAbility;
 
     void Start()
-    {     
+    {
         monster = GetComponent<Monster>();
         abilityList = new Dictionary<string, Ability>();
-        getAbilitiesFromParts(); 
+        GetAbilitiesFromParts();
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            testAbility.useAbility(monster);
+            testAbility.UseAbility(monster);
         }
     }
 
-    void getAbilitiesFromParts()
+    void GetAbilitiesFromParts()
     {
         foreach (MonsterPart part in monster.parts)
         {
@@ -36,5 +36,5 @@ public class AbilityController : MonoBehaviour
             foreach(Ability passive in part.passiveList)
                 passiveList.Add(passive);
         }
-    }  
+    }
 }

@@ -2,9 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Ability : MonoBehaviour
+[CreateAssetMenu(fileName = "New Ability", menuName = "Ability/Ability", order = 1)]
+public class Ability : ScriptableObject
 {
-    public AbilityDescriptor abilityDescriptor;
+    public string name;
+    public int damage;
+    public float cooldown;
+    public int energyCost;
+    public float castTime;
 
-    public abstract void useAbility(Monster monster);
+    public float cooldownTime;
+
+    public void Initialize()
+    {
+        cooldownTime = 0.0f;
+    }
+
+    public bool PreCondition(Monster monster)
+    {
+        if (Time.time < cooldownTime)
+            return false;
+
+        if (monster.energy < energyCost)
+            return false;
+
+        return true;
+    }
+
+    public void UseAbility(Monster monster)
+    {
+        if (!PreCondition(monster))
+            return;
+
+        cooldownTime = Time.time + cooldown;
+        monster.energy -= energyCost;
+
+        // CastTime
+
+        Cast(monster);
+    }
+
+    public virtual void Cast(Monster monster)
+    {
+
+    }
 }
