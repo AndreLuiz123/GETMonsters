@@ -28,7 +28,6 @@ public class Monster : MonoBehaviour
         isTurnedRight = true;
     }
 
-
     void Update ()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))

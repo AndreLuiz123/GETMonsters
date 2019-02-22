@@ -256,8 +256,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca403e2c3676a2c4fac9c0f1356827cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   status:
   - {fileID: 11400000, guid: 78b0b57851c06dd4bac7bdc21ca88cde, type: 2}
   - {fileID: 11400000, guid: ab9c192afaab93a489e31e4c5083f810, type: 2}
@@ -276,15 +276,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21fb4e0b29053b14d9b7731f949c71bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveList: 
+  m_Name:
+  m_EditorClassIdentifier:
+  moveList:
   onGround: 0
+  isCrouch: 0
+  shieldOn: 0
   groundCheck: {fileID: 2353752041512623201}
   jumpForce: 15
   runSpeed: 8
-  fallSpeed: 1.1
+  fallSpeed: 2
   rb: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &4284340867657457774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,8 +298,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb42ff9da1fe1fe4793722f7b53a6a79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   maxHealth: 100
   maxShield: 100
   maxEnergy: 100
@@ -319,8 +322,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61a8cf5eb23b88948acfa7dc003f7f0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   testAbilityDescriptor: {fileID: 11400000, guid: 89546163af6ee6b4fbfd0637dde4fbeb,
     type: 2}
 --- !u!1 &2353752041341343410
