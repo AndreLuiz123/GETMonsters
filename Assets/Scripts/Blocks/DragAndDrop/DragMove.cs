@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DragMove : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public static DropContainer dropContainer;
     public static Vector3 relativePosition;
     public static Canvas canvas;
 
@@ -26,7 +27,7 @@ public class DragMove : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (eventData.pointerCurrentRaycast.gameObject)
         {
             Transform selfTransform = eventData.pointerDrag.transform;
-            DropContainer dropContainer = eventData.pointerCurrentRaycast.gameObject.GetComponent<DropContainer>();
+            dropContainer = eventData.pointerCurrentRaycast.gameObject.GetComponent<DropContainer>();
 
             if (dropContainer)
             {
@@ -45,6 +46,8 @@ public class DragMove : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         CanvasGroup canvasGroup = eventData.pointerDrag.GetComponent<CanvasGroup>();
         canvasGroup.blocksRaycasts = true;
         relativePosition = Vector3.zero;
+
+        dropContainer.UpdateProgram(eventData.pointerDrag);
 
         LayoutRebuilder.MarkLayoutForRebuild(eventData.pointerDrag.GetComponent<RectTransform>());
     }

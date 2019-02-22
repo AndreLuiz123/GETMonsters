@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class ProgramBlock : MonoBehaviour
 {
+    public ProgramBlock prevBlock;
     public ProgramBlock nextBlock;
 
     public abstract ProgramBlock Execute(Monster monster);
