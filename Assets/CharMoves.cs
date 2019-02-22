@@ -18,20 +18,18 @@ public class CharMoves : MonoBehaviour {
     public float jumpForce;
     public float runSpeed;
     public float fallSpeed;
-    float verticalMove;
 
-
-
-    public Rigidbody2D rb;
+    public Rigidbody2D rigidbody;
     public Animator anim;
+    private Monster monster;
 
     // Use this for initialization
     void Start ()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        monster = GetComponent<Monster>();
         //moveList = new List<int>();
-        float verticalMove = Input.GetAxisRaw("Vertical");
         bool onGround = true;
         bool isCrouch = false;
         bool shieldOn = false;
@@ -46,105 +44,83 @@ public class CharMoves : MonoBehaviour {
 
         onGround = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
-        if(!shieldOn)
+
+
+        float horizontalMove = Input.GetAxisRaw("Horizontal")*runSpeed;
+        float verticalMove = Input.GetAxisRaw("Vertical");
+        //MOVIMENTAÇÃO
+        Move(horizontalMove);
+
+        //PULO
+
+        if(rigidbody.velocity.y>0)
         {
-
-            //MOVIMENTAÇÃO
-            float horizontalMove = Input.GetAxisRaw("Horizontal")*runSpeed;
-            verticalMove = Input.GetAxisRaw("Vertical");
-            rb.velocity= new Vector2(horizontalMove, rb.velocity.y);
-
-
-            //PULO
-            rb.velocity += Physics2D.gravity*Time.deltaTime;
-
-        if(!onGround)
-        {
-            anim.SetBool("onGround",false);
-            if(rb.velocity.y<0)
-            {
-                rb.velocity +=  fallSpeed*Physics2D.gravity*Time.deltaTime;
-            }
-
-        }else
-        {
-            anim.SetBool("onGround",true);
-            //rb.velocity = new Vector2(horizontalMove, 0);
-            if(Input.GetButton("Jump"))
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            }
+            rigidbody.velocity += Physics2D.gravity*Time.deltaTime;
+        }else{
+            rigidbody.velocity +=  fallSpeed*Physics2D.gravity*Time.deltaTime;
         }
+
+
+
+        //rigidbody.velocity = new Vector2(horizontalMove, 0);
+        if(Input.GetButton("Jump"))
+        {
+            Jump();
+        }
+
 
         //AGACHAR
-
-        if(verticalMove<0 && onGround)
+        isCrouch = false;
+        if(verticalMove<0)
         {
-            anim.SetBool("isCrouch",true);
-        }else
-        {
-            anim.SetBool("isCrouch",false);
+            Crouch();
         }
-    }
 
         //DEFENDER
-
+        shieldOn = false;
         if(Input.GetKey(KeyCode.Z))
         {
-            shieldOn = true;
-            anim.SetBool("shieldOn",true);
+            Shield();
+        }
+        if(shieldOn){
             Debug.Log("TESTE");
-        }else
-        {
-            shieldOn = false;
-            anim.SetBool("shieldOn",false);
         }
 
+
+        anim.SetBool("onGround", onGround);
+        anim.SetBool("isCrouch",isCrouch);
+        anim.SetBool("shieldOn",shieldOn);
     }
 
-    void Move()
+    void Move(float horizontalMove)
     {
-        float horizontalMove = Input.GetAxisRaw("Horizontal")*runSpeed;
-        rb.velocity= new Vector2(horizontalMove, rb.velocity.y);
+        if(!shieldOn)
+        {
+            rigidbody.velocity= new Vector2(horizontalMove, rigidbody.velocity.y);
+        }
     }
 
     void Jump()
     {
-        rb.velocity += Physics2D.gravity*Time.deltaTime;
-
-        if(!onGround)
+        if(onGround && !shieldOn)
         {
-            if(rb.velocity.y<0)
-            {
-                rb.velocity +=  fallSpeed*Physics2D.gravity*Time.deltaTime;
-            }
-
-        }else
-        {
-            //rb.velocity = new Vector2(horizontalMove, 0);
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x, jumpForce);
         }
     }
 
     void Crouch()
     {
-        if(verticalMove<0 && onGround)
+        if(onGround && !shieldOn)
         {
             isCrouch = true;
-        }else
-        {
-            isCrouch = false;
         }
     }
 
     void Shield()
     {
-        if(Input.GetKey(KeyCode.Z))
+        if(monster.shield>=0 && onGround && !isCrouch)
         {
             shieldOn = true;
-        }else
-        {
-            shieldOn = false;
         }
     }
 

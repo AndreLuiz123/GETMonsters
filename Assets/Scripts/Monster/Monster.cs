@@ -14,8 +14,8 @@ public class Monster : MonoBehaviour
 
     int life;
     int energy;
-    int shield;
-    
+    public int shield;
+
     public List<MonsterPart> parts;
     public Dictionary<string, Ability> abilityList;
     public List<Ability> passiveList;
@@ -34,7 +34,7 @@ public class Monster : MonoBehaviour
         abilityList = new Dictionary<string, Ability>();
         getPartsInfo();
         isTurnedRight = true;
-        
+
         foreach(KeyValuePair<string, Ability> ability in abilityList)
         {
             Debug.Log(ability.Key);

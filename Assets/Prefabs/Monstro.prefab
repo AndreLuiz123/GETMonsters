@@ -194,6 +194,7 @@ Transform:
   - {fileID: 2353752040752408353}
   - {fileID: 2353752040613883705}
   - {fileID: 2353752041341343413}
+  - {fileID: 8836138210037377585}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -254,8 +255,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca403e2c3676a2c4fac9c0f1356827cb, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   status:
   - {fileID: 11400000, guid: 78b0b57851c06dd4bac7bdc21ca88cde, type: 2}
   - {fileID: 11400000, guid: ab9c192afaab93a489e31e4c5083f810, type: 2}
@@ -274,15 +275,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21fb4e0b29053b14d9b7731f949c71bd, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  moveList:
+  m_Name: 
+  m_EditorClassIdentifier: 
   onGround: 0
+  isCrouch: 0
+  shieldOn: 0
   groundCheck: {fileID: 2353752041512623201}
   jumpForce: 15
   runSpeed: 5
-  fallSpeed: 1.1
+  fallSpeed: 2
   rb: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &4284340867657457774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,8 +296,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb42ff9da1fe1fe4793722f7b53a6a79, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   maxLife: 0
   maxEnergy: 0
   maxShield: 0
