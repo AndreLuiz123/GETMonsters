@@ -93,10 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8141a09b675198140b45bbc1e656aa4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootDescriptor: {fileID: 11400000, guid: 14e62be7ae3c15d4fabe76d294ee816a, type: 2}
   rigidbody: {fileID: 0}
   renderer: {fileID: 0}
-  x: 10
+  x: 15
   y: 0
 --- !u!1 &2130845967990444748
 GameObject:

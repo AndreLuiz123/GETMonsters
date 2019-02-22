@@ -9,6 +9,7 @@ public class AbilityController : MonoBehaviour
 
     Monster monster;
 
+    public AbilityDescriptor testAbilityDescriptor;
     public Ability testAbility;
 
     void Start()
@@ -16,6 +17,7 @@ public class AbilityController : MonoBehaviour
         monster = GetComponent<Monster>();
         abilityList = new Dictionary<string, Ability>();
         GetAbilitiesFromParts();
+        testAbility = new Ability(testAbilityDescriptor);
     }
 
     void Update()
@@ -30,11 +32,11 @@ public class AbilityController : MonoBehaviour
     {
         foreach (MonsterPart part in monster.parts)
         {
-            foreach(Ability ability in part.abilityList)
-                abilityList.Add(ability.name, ability);
+            foreach(AbilityDescriptor ability in part.abilityList)
+                abilityList.Add(ability.name, new Ability(ability));
 
-            foreach(Ability passive in part.passiveList)
-                passiveList.Add(passive);
+            foreach(AbilityDescriptor passive in part.passiveList)
+                passiveList.Add(new Ability(passive));
         }
     }
 }

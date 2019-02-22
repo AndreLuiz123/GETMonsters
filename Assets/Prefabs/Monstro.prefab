@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 2353752041020289593}
   - component: {fileID: 2353752041020289592}
   - component: {fileID: 4284340867657457774}
-  - component: {fileID: 7569500771192796066}
+  - component: {fileID: 4664012418532165751}
   m_Layer: 0
   m_Name: Monstro
   m_TagString: Untagged
@@ -282,7 +282,7 @@ MonoBehaviour:
   onGround: 0
   groundCheck: {fileID: 2353752041512623201}
   jumpForce: 15
-  runSpeed: 5
+  runSpeed: 8
   fallSpeed: 1.1
   rb: {fileID: 0}
 --- !u!114 &4284340867657457774
@@ -309,7 +309,7 @@ MonoBehaviour:
   parts: []
   mouth: {fileID: 8836138210037377585}
   isTurnedRight: 0
---- !u!114 &7569500771192796066
+--- !u!114 &4664012418532165751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,8 +321,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a8cf5eb23b88948acfa7dc003f7f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passiveList: []
-  testAbility: {fileID: 11400000, guid: 89546163af6ee6b4fbfd0637dde4fbeb, type: 2}
+  testAbilityDescriptor: {fileID: 11400000, guid: 89546163af6ee6b4fbfd0637dde4fbeb,
+    type: 2}
 --- !u!1 &2353752041341343410
 GameObject:
   m_ObjectHideFlags: 0

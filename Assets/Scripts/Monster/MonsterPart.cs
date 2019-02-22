@@ -10,7 +10,7 @@ public class MonsterPart : ScriptableObject
     public int movementSpeed;
     public int damage;
     public int partID;
-    public List <Ability> abilityList;
-    public List <Ability> passiveList;
+    public List <AbilityDescriptor> abilityList;
+    public List <AbilityDescriptor> passiveList;
     Sprite sprite;
 }

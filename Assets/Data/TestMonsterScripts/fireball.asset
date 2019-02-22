@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   damage: 0
-  cooldown: 0
+  cooldown: 1
   energyCost: 0
   castTime: 0
-  cooldownTime: 32.46959
   projectile: {fileID: 2130845967453357903, guid: 0706e8bb7482ac04bb9b2734fed1b8d6,
     type: 3}

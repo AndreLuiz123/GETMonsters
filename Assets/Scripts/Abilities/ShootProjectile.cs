@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Ability", menuName = "Ability/Shoot Projectile", order = 1)]
-public class ShootProjectile : Ability
+public class ShootProjectile : AbilityDescriptor
 {
     public GameObject projectile;
 

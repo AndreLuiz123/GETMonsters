@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Ability", menuName = "Ability/Ability", order = 1)]
-public class Ability : ScriptableObject
+public class Ability
 {
-    public string name;
-    public int damage;
-    public float cooldown;
-    public int energyCost;
-    public float castTime;
+    AbilityDescriptor descriptor;
 
     public float cooldownTime;
+
+    public Ability(AbilityDescriptor descriptor)
+    {
+        this.descriptor = descriptor;
+    }
 
     public void Initialize()
     {
@@ -23,7 +23,7 @@ public class Ability : ScriptableObject
         if (Time.time < cooldownTime)
             return false;
 
-        if (monster.energy < energyCost)
+        if (monster.energy < descriptor.energyCost)
             return false;
 
         return true;
@@ -34,16 +34,11 @@ public class Ability : ScriptableObject
         if (!PreCondition(monster))
             return;
 
-        cooldownTime = Time.time + cooldown;
-        monster.energy -= energyCost;
+        cooldownTime = Time.time + descriptor.cooldown;
+        monster.energy -= descriptor.energyCost;
 
         // CastTime
 
-        Cast(monster);
-    }
-
-    public virtual void Cast(Monster monster)
-    {
-
+        descriptor.Cast(monster);
     }
 }
