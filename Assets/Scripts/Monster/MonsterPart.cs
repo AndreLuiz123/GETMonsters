@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Monster Part", menuName = "Monster/Monster Part", order = 1)]
 public class MonsterPart : ScriptableObject
 {
-    public int life;
+    public int health;
     public int shield;
     public int movementSpeed;
     public int damage;

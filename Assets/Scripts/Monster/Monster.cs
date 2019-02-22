@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public int maxLife;
-    public int maxEnergy;
+    public int maxHealth;
     public int maxShield;
+    public int maxEnergy;
+
+    public int health;
+    public int shield;
+    public int energy;
 
     public int movementSpeed;
     public int damage;
     public int resistence;
-
-    public int life;
-    public int energy;
-    public int shield;
 
     public List<MonsterPart> parts;
 
@@ -47,7 +47,7 @@ public class Monster : MonoBehaviour
     {
         foreach (MonsterPart part in parts)
         {
-            maxLife += part.life;
+            maxHealth += part.health;
             maxShield += part.shield;
             movementSpeed += part.movementSpeed;
             damage += part.damage;

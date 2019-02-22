@@ -297,15 +297,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb42ff9da1fe1fe4793722f7b53a6a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife: 0
-  maxEnergy: 0
-  maxShield: 0
-  movementSpeed: 0
-  damage: 0
-  resistence: 0
-  life: 0
-  energy: 0
-  shield: 0
+  maxHealth: 100
+  maxShield: 100
+  maxEnergy: 100
+  health: 100
+  shield: 100
+  energy: 100
+  movementSpeed: 8
+  damage: 10
+  resistence: 10
   parts: []
   mouth: {fileID: 8836138210037377585}
   isTurnedRight: 0
