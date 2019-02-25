@@ -14,6 +14,7 @@ public class CharMoves : MonoBehaviour {
     public bool onGround;
     public bool isCrouch;
     public bool shieldOn;
+    public bool isFlying;
     public Transform groundCheck;
     public float jumpForce;
     public float runSpeed;
@@ -33,6 +34,7 @@ public class CharMoves : MonoBehaviour {
         bool onGround = true;
         bool isCrouch = false;
         bool shieldOn = false;
+        bool isFlying = false;
         anim.SetBool("onGround",true);
         anim.SetBool("isCrouch",false);
         anim.SetBool("shieldOn",false);
@@ -49,6 +51,7 @@ public class CharMoves : MonoBehaviour {
         float horizontalMove = Input.GetAxisRaw("Horizontal")*runSpeed;
         float verticalMove = Input.GetAxisRaw("Vertical");
         //MOVIMENTAÇÃO
+
         Move(horizontalMove);
 
         //PULO
@@ -57,10 +60,14 @@ public class CharMoves : MonoBehaviour {
         {
             rigidbody.velocity += Physics2D.gravity*Time.deltaTime;
         }else{
-            rigidbody.velocity +=  fallSpeed*Physics2D.gravity*Time.deltaTime;
+            if(isFlying)
+            {
+                rigidbody.velocity +=  Physics2D.gravity*Time.deltaTime/8;
+            }else
+            {
+                rigidbody.velocity +=  fallSpeed*Physics2D.gravity*Time.deltaTime;
+            }
         }
-
-
 
         //rigidbody.velocity = new Vector2(horizontalMove, 0);
         if(Input.GetButton("Jump"))
@@ -84,6 +91,13 @@ public class CharMoves : MonoBehaviour {
         }
         if(shieldOn){
             Debug.Log("TESTE");
+        }
+
+        //VOAR
+        isFlying = false;
+        if(Input.GetKey(KeyCode.X))
+        {
+            Fly();
         }
 
 
@@ -121,6 +135,13 @@ public class CharMoves : MonoBehaviour {
         if(monster.shield>=0 && onGround && !isCrouch)
         {
             shieldOn = true;
+        }
+    }
+
+    void Fly(){
+        if(monster.energy>0 && !onGround)
+        {
+            isFlying = true;
         }
     }
 
