@@ -22,6 +22,11 @@ public class DropContainer : MonoBehaviour, IDropHandler
         ProgramBlock dropBlock = dropObject.GetComponent<ProgramBlock>();
         if (dropBlock)
         {
+            if (dropBlock.prevBlock)
+                dropBlock.prevBlock.nextBlock = dropBlock.nextBlock;
+            if (dropBlock.nextBlock)
+                dropBlock.nextBlock.prevBlock = dropBlock.prevBlock;
+
             if (dropNext)
             {
                 ProgramBlock nextBlock = selfBlock.nextBlock;

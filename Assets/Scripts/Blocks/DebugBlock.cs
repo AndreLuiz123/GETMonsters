@@ -9,7 +9,10 @@ public class DebugBlock : ProgramBlock
 
     public override ProgramBlock Execute(Monster monster)
     {
-        Debug.Log(message + ": " + value.Value(monster));
+        if (value)
+            Debug.Log(message + ": " + value.Value(monster));
+        else
+            Debug.Log(message);
 
         return nextBlock;
     }

@@ -8,22 +8,22 @@ public class MonsterBrain : MonoBehaviour
     public ProgramBlock start;
 
     private ProgramBlock current;
-
-    void Start()
-    {
-        current = start;
-    }
-
-    void Update()
-    {
-        Execute();
-    }
+    private int comboBreaker;
 
     public void Execute()
     {
-        for(; current != null;)
+        comboBreaker = 10;
+
+        for(current = start; current != null;)
         {
             current = current.Execute(monster);
+
+            comboBreaker--;
+            if (comboBreaker < 0)
+            {
+                Debug.LogWarning("C-C-C-COMBO BREAKER!!!");
+                return;
+            }
         }
     }
 }
