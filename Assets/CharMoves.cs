@@ -81,9 +81,12 @@ public class CharMoves : MonoBehaviour {
 
         //rigidbody.velocity = new Vector2(horizontalMove, 0);
         isFlying = false;
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButton("Jump"))
         {
-            Jump();
+            if(onGround)
+            {
+                Jump();
+            }
         }
 
         //AGACHAR
@@ -143,7 +146,11 @@ public class CharMoves : MonoBehaviour {
     {
         if(monster.shield>=0 && onGround && !isCrouch)
         {
-            shieldOn = true;
+            if(rigidbody.velocity != new Vector2(0,0))
+            {
+                rigidbody.velocity = new Vector2(0,0);
+            }
+                shieldOn = true;
         }
     }
 
