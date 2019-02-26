@@ -9,22 +9,18 @@ public class AbilityController : MonoBehaviour
 
     Monster monster;
 
-    public AbilityDescriptor testAbilityDescriptor;
-    public Ability testAbility;
-
     void Start()
     {
         monster = GetComponent<Monster>();
         abilityList = new Dictionary<string, Ability>();
         GetAbilitiesFromParts();
-        testAbility = new Ability(testAbilityDescriptor);
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Ability1"))
         {
-            testAbility.UseAbility(monster);
+            abilityList["fireball"].UseAbility(monster);
         }
     }
 

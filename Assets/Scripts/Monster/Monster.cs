@@ -25,6 +25,11 @@ public class Monster : MonoBehaviour
     void Start ()
     {
         GetStatusFromParts();
+
+        health = maxHealth;
+        shield = maxShield;
+        energy = maxEnergy;
+
         isTurnedRight = true;
     }
 
@@ -51,5 +56,10 @@ public class Monster : MonoBehaviour
             movementSpeed += part.movementSpeed;
             damage += part.damage;
         }
+    }
+
+    public void ReceiveDamage(int damage)
+    {
+        health = health - damage;
     }
 }

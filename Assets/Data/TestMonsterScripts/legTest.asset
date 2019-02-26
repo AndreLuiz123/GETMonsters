@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d3117c22691a349a951ac097b4a82c, type: 3}
   m_Name: legTest
   m_EditorClassIdentifier: 
-  life: 300
+  health: 0
   shield: 30
   movementSpeed: 30
   damage: 30
   partID: 2
-  abilityList:
-  - {fileID: 11400000, guid: 9f72320d47c727b4abb084b366313b08, type: 2}
+  abilityList: []
   passiveList: []

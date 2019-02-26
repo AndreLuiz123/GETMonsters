@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d3117c22691a349a951ac097b4a82c, type: 3}
   m_Name: bodyTest
   m_EditorClassIdentifier: 
-  life: 100
+  health: 0
   shield: 10
   movementSpeed: 10
   damage: 10
   partID: 1
-  abilityList:
-  - {fileID: 11400000, guid: b834da08b136b8c47a0b02bbd02ee1e5, type: 2}
+  abilityList: []
   passiveList: []

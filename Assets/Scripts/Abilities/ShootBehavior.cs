@@ -7,6 +7,7 @@ public class ShootBehavior : MonoBehaviour
     public Rigidbody2D rigidbody;
     public Renderer renderer;
     public float x, y;
+    public int damage;
 
     void Start()
     {
@@ -25,5 +26,15 @@ public class ShootBehavior : MonoBehaviour
     {
         transform.localScale = new Vector3(direction, 1f, 1f);
         x = Mathf.Abs(x) * direction;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag=="Player")
+        {
+            Monster monster = collision.gameObject.GetComponent<Monster>();
+            monster.ReceiveDamage(damage);
+        }
+        Destroy(gameObject);
     }
 }
