@@ -50,19 +50,29 @@ public class CharMoves : MonoBehaviour {
 
         float horizontalMove = Input.GetAxisRaw("Horizontal")*runSpeed;
         float verticalMove = Input.GetAxisRaw("Vertical");
-        //MOVIMENTAÇÃO
+        float verticalMovimentation;
 
-        Move(horizontalMove);
+        if(!isFlying)
+        {
+            verticalMovimentation = rigidbody.velocity.y;
+        }else
+        {
+            verticalMovimentation = Input.GetAxisRaw("Vertical")*runSpeed;
+        }
+
+
+        //MOVIMENTAÇÃO
+        Move(horizontalMove, verticalMovimentation);
 
         //PULO
-
         if(rigidbody.velocity.y>0)
         {
             rigidbody.velocity += Physics2D.gravity*Time.deltaTime;
-        }else{
+        }else
+        {
             if(isFlying)
             {
-                rigidbody.velocity +=  Physics2D.gravity*Time.deltaTime/8;
+                rigidbody.velocity +=  Physics2D.gravity*Time.deltaTime*0;
             }else
             {
                 rigidbody.velocity +=  fallSpeed*Physics2D.gravity*Time.deltaTime;
@@ -70,11 +80,11 @@ public class CharMoves : MonoBehaviour {
         }
 
         //rigidbody.velocity = new Vector2(horizontalMove, 0);
-        if(Input.GetButton("Jump"))
+        isFlying = false;
+        if(Input.GetButtonDown("Jump"))
         {
             Jump();
         }
-
 
         //AGACHAR
         isCrouch = false;
@@ -95,8 +105,7 @@ public class CharMoves : MonoBehaviour {
 
         //VOAR
         isFlying = false;
-        if(Input.GetKey(KeyCode.X))
-        {
+        if(Input.GetKey(KeyCode.X)){
             Fly();
         }
 
@@ -106,11 +115,11 @@ public class CharMoves : MonoBehaviour {
         anim.SetBool("shieldOn",shieldOn);
     }
 
-    void Move(float horizontalMove)
+    void Move(float horizontalMove, float verticalMove)
     {
         if(!shieldOn)
         {
-            rigidbody.velocity= new Vector2(horizontalMove, rigidbody.velocity.y);
+            rigidbody.velocity = new Vector2(horizontalMove, verticalMove);
         }
     }
 
