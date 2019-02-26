@@ -20,7 +20,11 @@ public class AbilityController : MonoBehaviour
     {
         if (Input.GetButtonDown("Ability1"))
         {
-            abilityList["fireball"].UseAbility(monster);
+            abilityList["Fireball"].UseAbility(monster);
+        }
+        if (Input.GetButtonDown("Ability2"))
+        {
+             abilityList["Roar"].UseAbility(monster);
         }
     }
 

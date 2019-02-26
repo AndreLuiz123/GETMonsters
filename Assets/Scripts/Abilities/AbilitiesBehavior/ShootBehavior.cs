@@ -28,11 +28,11 @@ public class ShootBehavior : MonoBehaviour
         x = Mathf.Abs(x) * direction;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.tag=="Player")
+        if (collider.gameObject.tag=="Player")
         {
-            Monster monster = collision.gameObject.GetComponent<Monster>();
+            Monster monster = collider.gameObject.GetComponent<Monster>();
             monster.ReceiveDamage(damage);
         }
         Destroy(gameObject);

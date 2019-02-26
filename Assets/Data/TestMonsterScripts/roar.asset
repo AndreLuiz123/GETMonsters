@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 256d730cd6fb49f40b9e82ecfc1ec5ae, type: 3}
-  m_Name: fireball
+  m_Script: {fileID: 11500000, guid: 9bda8d3f0f6781648903869b6b88969e, type: 3}
+  m_Name: roar
   m_EditorClassIdentifier: 
-  name: Fireball
-  damage: 25
-  cooldown: 1
+  name: Roar
+  damage: 10
+  cooldown: 2
   energyCost: 0
   castTime: 0
-  projectile: {fileID: 2130845967453357903, guid: 0706e8bb7482ac04bb9b2734fed1b8d6,
-    type: 3}
+  prefab: {fileID: 5125585796693114797, guid: a54d34af3fed3a4469523df5c75446c2, type: 3}

@@ -19,4 +19,5 @@ MonoBehaviour:
   partID: 0
   abilityList:
   - {fileID: 11400000, guid: 89546163af6ee6b4fbfd0637dde4fbeb, type: 2}
+  - {fileID: 11400000, guid: 61a11d19beb79714b95d186ff4f74b87, type: 2}
   passiveList: []
