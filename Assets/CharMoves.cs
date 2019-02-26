@@ -44,7 +44,7 @@ public class CharMoves : MonoBehaviour {
     void Update ()
     {
 
-        onGround = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        onGround = Physics2D.Linecast(transform.position + new Vector3(0, 0.22f, 0), groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
 
 
@@ -80,13 +80,24 @@ public class CharMoves : MonoBehaviour {
         }
 
         //rigidbody.velocity = new Vector2(horizontalMove, 0);
-        isFlying = false;
-        if(Input.GetButton("Jump"))
+        if (Input.GetButton("Jump"))
         {
-            if(onGround)
+            if (onGround)
             {
                 Jump();
             }
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (!onGround)
+            {
+                Fly();
+            }
+        }
+        if (Input.GetButtonUp("Jump"))
+        {
+            isFlying = false;
         }
 
         //AGACHAR
@@ -105,13 +116,6 @@ public class CharMoves : MonoBehaviour {
         if(shieldOn){
             Debug.Log("TESTE");
         }
-
-        //VOAR
-        isFlying = false;
-        if(Input.GetKey(KeyCode.X)){
-            Fly();
-        }
-
 
         anim.SetBool("onGround", onGround);
         anim.SetBool("isCrouch",isCrouch);
@@ -154,8 +158,9 @@ public class CharMoves : MonoBehaviour {
         }
     }
 
-    void Fly(){
-        if(monster.energy>0 && !onGround)
+    void Fly()
+    {
+        if(monster.energy>0)
         {
             isFlying = true;
         }
